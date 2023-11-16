@@ -1,4 +1,4 @@
-# 依赖项
+# 全局、路由依赖项
 from typing import Annotated
 
 from fastapi import HTTPException, status, Header, Depends
