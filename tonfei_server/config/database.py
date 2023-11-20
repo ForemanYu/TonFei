@@ -6,13 +6,16 @@ from sqlalchemy.orm import sessionmaker
 
 # 为 SQLAlchemy 定义数据库 URL地址¶
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./app.db"
-# SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
+# SQLALCHEMY_DATABASE_URL = "sqlite:///./app.db"
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres:123456@127.0.0.1/tonfei"
 
 # 创建 SQLAlchemy 引擎
 # connect_args 仅用于SQLite，在其他数据库不需要它
+# engine = create_engine(
+#     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+# )
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+    SQLALCHEMY_DATABASE_URL
 )
 
 # 创建一个SessionLocal类 这个实例将是实际的数据库会话
