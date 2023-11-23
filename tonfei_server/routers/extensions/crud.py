@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
 from tonfei_server.orms.models import models
-from tonfei_server.orms.schemas import schemas
+from tonfei_server.orms.vo import schemas
 
 
 async def get_user(db: Session, user_id: int):

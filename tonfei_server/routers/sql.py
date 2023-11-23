@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from requests import Session
 
-from tonfei_server.orms.schemas import schemas
 from tonfei_server.orms.utils import get_db
+from tonfei_server.orms.vo import schemas
 from tonfei_server.routers.extensions import crud
 
 router = APIRouter()

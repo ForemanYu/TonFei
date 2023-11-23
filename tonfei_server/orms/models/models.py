@@ -1,7 +1,7 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
-from tonfei_server.config.database import Base
+from tonfei_server.config.database_sql import Base
 
 
 # 这些类就是 SQLAlchemy 模型 作用于数据库模型

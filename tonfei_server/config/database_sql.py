@@ -1,13 +1,13 @@
-# 数据库连接
+# 关系型 数据库连接
 
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# 为 SQLAlchemy 定义数据库 URL地址¶
+# 为 SQLAlchemy 定义数据库 URL地址
 
 # SQLALCHEMY_DATABASE_URL = "sqlite:///./app.db"
-SQLALCHEMY_DATABASE_URL = "postgresql://postgres:123456@127.0.0.1/tonfei"
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres:123456@10.10.2.17/tonfei"
 
 # 创建 SQLAlchemy 引擎
 # connect_args 仅用于SQLite，在其他数据库不需要它
