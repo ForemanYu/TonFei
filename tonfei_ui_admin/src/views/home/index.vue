@@ -35,7 +35,22 @@ interface myObj {
 }
 
 const onSubmit = () => {
-  data.objs.push({ user: "文心一言", age: 18 });
+  const eventSource = new EventSource(
+    "http://127.0.0.1:8008/dialogue/questions?content=%E7%8E%B0%E5%9C%A8%E7%9A%84%E6%97%B6%E9%97%B4%E6%98%AF"
+  );
+
+  eventSource.addEventListener("message", event => {
+    // 处理接收到的事件数据
+    const eventData = JSON.parse(event.data);
+    // 进行相应的操作
+    console.log(eventData);
+  });
+
+  eventSource.addEventListener("error", error => {
+    // 处理错误
+    console.error("EventSource error:", error);
+  });
+  // data.objs.push({ user: "文心一言", age: 18 });
 };
 </script>
 

@@ -4,6 +4,8 @@ from tonfei_server.orms.models import models
 from tonfei_server.orms.vo import schemas
 
 
+# 关系型数据库操作
+
 async def get_user(db: Session, user_id: int):
     return db.query(models.User).filter(models.User.id == user_id).first()
 

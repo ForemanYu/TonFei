@@ -1,9 +1,31 @@
+import erniebot
 from fastapi import APIRouter
+from fastapi.responses import StreamingResponse
 
 from tonfei_server.config.database_no_sql import collection
 from tonfei_server.orms.models.dialogue import Item
 
 router = APIRouter()
+
+
+@router.get("/questions")
+async def questions(content: str):
+    erniebot.api_type = 'aistudio'
+    erniebot.access_token = '331cc486c69e2df813cc0eebcb43a73fdc5197b3'
+
+    model = 'ernie-bot'
+    messages = [{'role': 'user', 'content': content}]
+    first_response = erniebot.ChatCompletion.create(
+        model=model,
+        messages=messages,
+        stream=True
+    )
+
+    async def generate():
+        for msg in first_response:
+            yield msg.get_result()
+
+    return StreamingResponse(generate(), media_type="text/plain")
 
 
 @router.post("/")

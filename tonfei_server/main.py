@@ -1,5 +1,6 @@
 import uvicorn
 from fastapi import FastAPI, Depends, Request, Response
+from starlette.middleware.cors import CORSMiddleware
 
 from routers import login, items, users, sql, dialogue
 from tonfei_server.config.database_sql import engine, SessionLocal
@@ -15,6 +16,17 @@ app.include_router(items.router, prefix="/items", tags=["items"], dependencies=[
 app.include_router(sql.router, prefix="/sql", tags=["sql"])
 app.include_router(dialogue.router, prefix="/dialogue", tags=["dialogue"])
 app.include_router(login.router, prefix="/login", tags=["login"])
+
+origins = [
+    "*"
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 # 中间件
