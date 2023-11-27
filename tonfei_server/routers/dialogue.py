@@ -8,7 +8,7 @@ from tonfei_server.orms.models.dialogue import Item
 router = APIRouter()
 
 
-@router.get("/questions")
+@router.post("/questions")
 async def questions(content: str):
     erniebot.api_type = 'aistudio'
     erniebot.access_token = '331cc486c69e2df813cc0eebcb43a73fdc5197b3'
@@ -23,9 +23,10 @@ async def questions(content: str):
 
     async def generate():
         for msg in first_response:
+            print(msg.get_result())
             yield msg.get_result()
 
-    return StreamingResponse(generate(), media_type="text/plain")
+    return StreamingResponse(generate(), media_type="text/event-stream")
 
 
 @router.post("/")
