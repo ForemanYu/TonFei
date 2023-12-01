@@ -6,7 +6,8 @@ from jose import JWTError, jwt
 from pydantic import ValidationError
 
 from tonfei_server.constant.constant import SECRET_KEY, ALGORITHM
-from tonfei_server.routers.extensions.login import TokenData, get_user, User
+from tonfei_server.orms.vo.login_vo import TokenData
+from tonfei_server.routers.extensions.login import get_user, User
 from tonfei_server.routers.login import fake_users_db
 
 

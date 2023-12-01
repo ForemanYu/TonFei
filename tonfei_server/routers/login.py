@@ -1,11 +1,11 @@
 from datetime import timedelta
-from typing import Annotated
 
-from fastapi import HTTPException, APIRouter, Depends
-from fastapi.security import OAuth2PasswordRequestForm
+from fastapi import HTTPException, APIRouter
 
 from tonfei_server.constant.constant import ACCESS_TOKEN_EXPIRE_MINUTES
-from tonfei_server.routers.extensions.login import Token, authenticate_user, create_access_token
+from tonfei_server.orms.dto.login_dto import Login
+from tonfei_server.orms.vo.login_vo import Token
+from tonfei_server.routers.extensions.login import authenticate_user, create_access_token
 
 router = APIRouter()
 
@@ -22,7 +22,7 @@ fake_users_db = {
 
 # 账号 johndoe 密码 secret
 @router.post("/token", response_model=Token)
-async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
+async def login_for_access_token(form_data: Login):
     user = authenticate_user(fake_users_db, form_data.username, form_data.password)
     if not user:
         raise HTTPException(status_code=400, detail="Incorrect username or password")
@@ -31,4 +31,4 @@ async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm,
         data={"sub": user.username, "scopes": form_data.scopes},
         expires_delta=access_token_expires,
     )
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {"data": {"access_token": access_token, "token_type": "bearer"}}

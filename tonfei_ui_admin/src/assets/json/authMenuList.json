@@ -30,6 +30,20 @@
       }
     },
     {
+      "path": "/svPrint",
+      "name": "svPrint",
+      "component": "/svPrint/index",
+      "meta": {
+        "icon": "Histogram",
+        "title": "条码设计",
+        "isLink": "",
+        "isHide": false,
+        "isFull": true,
+        "isAffix": false,
+        "isKeepAlive": true
+      }
+    },
+    {
       "path": "/proTable",
       "name": "proTable",
       "redirect": "/proTable/useProTable",

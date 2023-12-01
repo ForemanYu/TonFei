@@ -1,22 +1,21 @@
 <template>
-  <!--  <div class="home card">-->
-  <!--    <img class="home-bg" src="@/assets/images/welcome.png" alt="welcome" />-->
-  <!--  </div>-->
   <div class="home">
-    <el-card class="box-card">
-      <div v-for="(o, index) in data.objs" :key="index" class="text item">
-        <div style="width: 800px">{{ o.key + "-" + o.content }}</div>
-      </div>
-    </el-card>
-  </div>
-  <div class="home-bottom">
-    <el-affix position="bottom" :offset="50">
-      <el-input v-model="data1" placeholder="与文心一言交谈" style="width: 500px">
-        <template #append>
-          <el-button @click="sendPost"> 发送</el-button>
-        </template>
-      </el-input>
-    </el-affix>
+    <div class="home-content">
+      <el-card class="box-card">
+        <div v-for="(o, index) in data.objs" :key="index" class="text item">
+          <div style="width: 800px">{{ o.key + "-" + o.content }}</div>
+        </div>
+      </el-card>
+    </div>
+    <div class="home-bottom">
+      <el-affix position="bottom" :offset="50">
+        <el-input v-model="data1" placeholder="与文心一言交谈" style="width: 500px">
+          <template #append>
+            <el-button @click="sendPost"> 发送</el-button>
+          </template>
+        </el-input>
+      </el-affix>
+    </div>
   </div>
 </template>
 

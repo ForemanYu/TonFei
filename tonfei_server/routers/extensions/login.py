@@ -10,16 +10,6 @@ from pydantic import BaseModel
 from tonfei_server.constant.constant import SECRET_KEY, ALGORITHM
 
 
-class Token(BaseModel):
-    access_token: str
-    token_type: str
-
-
-class TokenData(BaseModel):
-    username: str | None = None
-    scopes: list[str] = []
-
-
 class User(BaseModel):
     username: str
     email: Union[str, None] = None
