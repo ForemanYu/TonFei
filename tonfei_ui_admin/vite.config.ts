@@ -1,4 +1,4 @@
-import { defineConfig, loadEnv, ConfigEnv, UserConfig } from "vite";
+import { ConfigEnv, defineConfig, loadEnv, UserConfig } from "vite";
 import { resolve } from "path";
 import { wrapperEnv } from "./build/getEnv";
 import { createProxy } from "./build/proxy";
@@ -22,9 +22,11 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     base: viteEnv.VITE_PUBLIC_PATH,
     root,
     resolve: {
+      //创建模块别名
       alias: {
         "@": resolve(__dirname, "./src"),
-        "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js"
+        "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js",
+        "sv-p": "/node_modules/.pnpm/sv-print@0.1.13_@lezer+common@1.1.1/node_modules/sv-print/dist"
       }
     },
     define: {
