@@ -29,6 +29,7 @@
 | 条码追溯 | 条码生成   |                                              |
 |          | 物料追溯   |                                              |
 |          | 条码设置   |                                              |
+|          | 打印设计   |                                              |
 
 技术栈： 
 
@@ -48,12 +49,12 @@
 
 1. 移动端（小程序/Android/Ios/H5） 
 
-相关技术：Uniapp、uView、uChart 
+相关技术：Flutter、Dart、Uniapp、uView、uChart 
 
-开发工具：HBuilder 
+开发工具：Android Studio, HBuilder 
 
 1. 硬件端 
 
 相关技术：ESP-IDF、Arduino、FreeRTOS、Python、Lua等 
 
-开发工具：Visual Studio Code 和 Arduino等 
+开发工具：Clion 和 Arduino等 
